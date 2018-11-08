@@ -22,6 +22,9 @@ const ListAttraction = ({ attractions, handleRemove }) => (
                     <div className="panel-body">
                         <strong>Data de exibição:</strong> { item.exhibition }
                     </div>
+                    <div className="panel-footer">
+                        { item.type }
+                    </div>
                 </div>
             </div>
         )) }

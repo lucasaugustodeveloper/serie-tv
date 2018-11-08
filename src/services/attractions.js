@@ -6,8 +6,8 @@ import DB from './db';
 // }
 
 export const GET_ATTRACTION = () =>  DB.attractions.toArray();
-export const SAVE_ATTRACTION = ({ name, exhibition }) => {
-    DB.attractions.put({ name, exhibition });
+export const SAVE_ATTRACTION = ({ name, exhibition, type }) => {
+    DB.attractions.put({ name, exhibition, type });
 }
 export const UPDATED_ATTRACTION = ({ id, name, exhibition }) => {
     DB.attractions.update({ id, name, exhibition });

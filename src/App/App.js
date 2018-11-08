@@ -40,18 +40,19 @@ class App extends Component {
   }
 
   handleSubmit() {
-    const { atracao, hour } = this.state;
+    const { atracao, hour, type } = this.state;
 
-    if (atracao === '' || hour === '') return;
+    if (atracao === '' || hour === '' || type === '') return;
 
     const dadosAtracao = {
       name: atracao,
-      exhibition: hour
+      exhibition: hour,
+      type: type
     };
 
     SAVE_ATTRACTION(dadosAtracao);
     this.refresh();
-    this.setState({ atracao: '', hour: '' })
+    this.setState({ atracao: '', hour: '', type: '' })
   }
 
   handleDelete(id) {
