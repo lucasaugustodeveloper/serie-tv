@@ -19,7 +19,8 @@ class App extends Component {
       atracoes: [],
       id: 0,
       atracao: '',
-      hour: ''
+      hour: '',
+      type: ''
     }
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -71,19 +72,38 @@ class App extends Component {
         </header>
         
         <main className="container">
-            <div className="col-md-6">              
-              <div className="form-group">
-                <Label
-                  name='atracao'
-                  displayName='Nome da Atração'
-                />
-                <Input
-                  type='text'
-                  placeholder='nome da atração'
-                  name='atracao'
-                  value={ this.state.atracao }
-                  handleInputChange={ this.handleInputChange }
-                />
+            <div className="col-md-6">
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="form-group">
+                    <Label
+                      name='atracao'
+                      displayName='Nome da Atração'
+                    />
+                    <Input
+                      type='text'
+                      placeholder='nome da atração'
+                      name='atracao'
+                      value={ this.state.atracao }
+                      handleInputChange={ this.handleInputChange }
+                    />
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="form-group">
+                    <Label
+                      name="type"
+                      displayName="Local do filme"
+                    />
+                    <Input
+                      type="text"
+                      placeholder="Local de exibição"
+                      name="type"
+                      value={ this.state.type }
+                      handleInputChange={ this.handleInputChange }
+                    />
+                  </div>
+                </div>
               </div>
 
               <div className="form-group">
