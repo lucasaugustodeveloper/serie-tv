@@ -78,6 +78,7 @@ class Attractions extends Component {
         UPDATED_ATTRACTION({ id, atracao, hour });
         this.refresh();
         this.clearForm();
+        this.setState({ update: false });
     }
 
     handleDelete(id) {
