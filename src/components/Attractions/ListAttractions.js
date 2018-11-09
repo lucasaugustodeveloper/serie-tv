@@ -5,7 +5,7 @@ import './css/ListAttractions.css';
 const ListAttraction = ({
     attractions,
     handleRemove,
-    handleUpdate
+    handleGetItem
 }) => (
     <div className="listAttractions row">
         { attractions.map(item => (
@@ -16,7 +16,7 @@ const ListAttraction = ({
                             <div className="col-xs-12 col-sm-7 col-lg-7">{ item.name }</div>
                             <div className="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-0 col-lg-5">
                                 <div className="btn-group">
-                                    <button className="btn btn-warning" onClick={ () => handleUpdate(item.id) }>
+                                    <button className="btn btn-warning" onClick={ () => handleGetItem(item.id) }>
                                         <img
                                             src="https://cdn3.iconfinder.com/data/icons/cool-application-icons/512/pen-15-512.png"
                                             style={{ width: '20px', height: '20px' }}

@@ -4,6 +4,7 @@ import {
     GET_ALL_ATTRACTIONS,
     GET_ATTRACTION,
     SAVE_ATTRACTION,
+    UPDATED_ATTRACTION,
     DELETE_ATTRACTION
 } from '../../services/attractions';
 import FormAttraction from './FormAttractions';
@@ -19,14 +20,14 @@ class Attractions extends Component {
             atracao: '',
             hour: '',
             type: '',
-            attraction: [],
             update: false
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleUpdated = this.handleUpdated.bind(this);
+        this.handleUpdate = this.handleUpdate.bind(this);
+        this.handleGetItem = this.handleGetItem.bind(this);
 
         this.refresh();
     }
@@ -57,7 +58,7 @@ class Attractions extends Component {
         this.clearForm();
     }
 
-    handleUpdated(id) {
+    handleGetItem(id) {
         GET_ATTRACTION(id)
             .then(res => {
                 const { id, name, type, exhibition } = res[0];
@@ -69,6 +70,14 @@ class Attractions extends Component {
                     update: true
                 });
             });
+    }
+
+    handleUpdate() {
+        const { id, atracao, hour } = this.state;
+
+        UPDATED_ATTRACTION({ id, atracao, hour });
+        this.refresh();
+        this.clearForm();
     }
 
     handleDelete(id) {
@@ -100,15 +109,14 @@ class Attractions extends Component {
                     hour={ hour }
                     handleInputChange={ this.handleInputChange }
                     handleSubmit={ this.handleSubmit }
-                    handleUpdate={ this.handleUpdated }
+                    handleUpdate={ this.handleUpdate }
                     update={ update }
                     infoId={ id }
                 />
                 <ListAttraction
                     attractions={ atracoes }
                     handleRemove={ this.handleDelete }
-                    handleUpdated={ this.handleUpdated }
-                    handleUpdate={ this.handleUpdated }
+                    handleGetItem={ this.handleGetItem }
                 />
             </main>
         )

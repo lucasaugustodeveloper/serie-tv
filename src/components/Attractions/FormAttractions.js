@@ -60,7 +60,7 @@ const FormAttraction = ({
                     <button
                         type="button"
                         className="btnSend btn btn-default btn-block btn-lg"
-                        onClick={ !update ? handleSubmit : handleUpdate(infoId) }
+                        onClick={ !update ? handleSubmit : () => handleUpdate(infoId) }
                     >
                         { !update ? 'Salvar': 'Update' }
                     </button>
