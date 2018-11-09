@@ -9,7 +9,7 @@ import Menu from '../components/Menu/Menu';
 const Home = lazy(() => import('../pages/home/Home'));
 const About = lazy(() => import('../pages/about/About'));
 const Dashboard = lazy(() => import('../pages/dashboard/Dashboard'));
-const UpdateAttraction = lazy(() => import('../components/Attractions/UpdateAttraction'));
+const Attractions = lazy(() => import('../components/Attractions/Attractions'));
 
 const App = () => (
   <div className="container-fluid">
@@ -21,9 +21,9 @@ const App = () => (
 
         <Switch>
           <Route exact path="/" component={ Home } />
-          <Route exact path="/about" component={ About } />
-          <Route exact path="/dashboard" component={ Dashboard } />
-          <Route exact path="/dashboard/edit/:id" component={ UpdateAttraction } />
+          <Route path="/attractions" component={ Attractions } />
+          <Route path="/about" component={ About } />
+          <Route path="/dashboard" component={ Dashboard } />
         </Switch>
       </Suspense>
     </Router>

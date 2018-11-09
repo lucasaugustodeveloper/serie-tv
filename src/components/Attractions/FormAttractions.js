@@ -4,7 +4,16 @@ import './css/FormAttraction.css';
 import Input from '../Input';
 import Label from '../Label';
 
-const FormAttraction = ({ atracao, type, hour, handleInputChange, handleSubmit }) => (
+const FormAttraction = ({
+    atracao,
+    type,
+    hour,
+    handleInputChange,
+    handleSubmit,
+    handleUpdate,
+    update,
+    infoId
+}) => (
     <div className="row">
         <div className="col-xs-6">
             <Label
@@ -51,8 +60,10 @@ const FormAttraction = ({ atracao, type, hour, handleInputChange, handleSubmit }
                     <button
                         type="button"
                         className="btnSend btn btn-default btn-block btn-lg"
-                        onClick={ handleSubmit }
-                    >Enviar</button>
+                        onClick={ !update ? handleSubmit : handleUpdate(infoId) }
+                    >
+                        { !update ? 'Salvar': 'Update' }
+                    </button>
                 </div>
             </div>
         </div>

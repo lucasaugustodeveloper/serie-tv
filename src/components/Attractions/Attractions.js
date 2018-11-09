@@ -1,9 +1,9 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 import {
     GET_ALL_ATTRACTIONS,
+    GET_ATTRACTION,
     SAVE_ATTRACTION,
-    UPDATED_ATTRACTION,
     DELETE_ATTRACTION
 } from '../../services/attractions';
 import FormAttraction from './FormAttractions';
@@ -18,12 +18,15 @@ class Attractions extends Component {
             id: 0,
             atracao: '',
             hour: '',
-            type: ''
+            type: '',
+            attraction: [],
+            update: false
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleUpdated = this.handleUpdated.bind(this);
 
         this.refresh();
     }
@@ -54,6 +57,20 @@ class Attractions extends Component {
         this.clearForm();
     }
 
+    handleUpdated(id) {
+        GET_ATTRACTION(id)
+            .then(res => {
+                const { id, name, type, exhibition } = res[0];
+                this.setState({
+                    id: id,
+                    atracao: name,
+                    type: type,
+                    hour: exhibition,
+                    update: true
+                });
+            });
+    }
+
     handleDelete(id) {
         DELETE_ATTRACTION(id);
         this.refresh();
@@ -73,22 +90,27 @@ class Attractions extends Component {
     }
 
     render() {
-        const { atracoes, atracao, hour, type } = this.state;
+        const { atracoes, id, atracao, hour, type, update } = this.state;
 
         return (
-            <Fragment>
+            <main className="main container">
                 <FormAttraction
                     atracao={ atracao }
                     type={ type }
                     hour={ hour }
                     handleInputChange={ this.handleInputChange }
                     handleSubmit={ this.handleSubmit }
+                    handleUpdate={ this.handleUpdated }
+                    update={ update }
+                    infoId={ id }
                 />
                 <ListAttraction
                     attractions={ atracoes }
                     handleRemove={ this.handleDelete }
+                    handleUpdated={ this.handleUpdated }
+                    handleUpdate={ this.handleUpdated }
                 />
-            </Fragment>
+            </main>
         )
     }
 }

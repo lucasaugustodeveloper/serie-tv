@@ -1,39 +1,40 @@
-import React, { Fragment } from 'react';
+import React, { Component } from 'react';
 
 import { GET_ATTRACTION } from '../../services/attractions';
 import FormAttraction from './FormAttractions';
 
-const info = id => {
-    return GET_ATTRACTION(parseInt(id));
-};
+class UpdateAttraction extends Component {
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            atracao: [],
+            name: ''
+        }
 
-const handleInputChange = () => {
-    console.log('handleChange');
-}
-const handleSubmit = () => {
-    console.log('handleSubmit');
-}
+        this.getAttraction = this.getAttraction.bind(this);
+        this.getAttraction();
+    }
 
-const UpdateAttraction = props => {
-    const { pathname } = window.location;
-    const _id = pathname.split('/')[3];
-    info(_id).then(res => console.log(res));
+    componentDidMount() {
+    }
+    
+    getAttraction() {
+        const { params } = this.props.match;
+    
+        GET_ATTRACTION(parseInt(params.id))
+            .then(res => this.setState({ atracao: res }));
 
-    const atracao = '';
-    const type = '';
-    const hour = '';
+        this.setState({ name: 'lucas' });
 
-    return (
-        <Fragment>
-            <FormAttraction
-                atracao={ atracao }
-                type={ type }
-                hour={ hour }
-                handleInputChange={ handleInputChange }
-                handleSubmit={ handleSubmit }
-            />
-        </Fragment>
-    )
+        console.log(this.state);
+    }
+
+    render() {
+        return (
+            <div>Update Attraction</div>
+        )
+    }
 }
 
 export default UpdateAttraction;
