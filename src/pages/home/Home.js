@@ -5,7 +5,7 @@ class Home extends Component {
         return (
             <div className="row">
                 <h2 className="text-center">
-                    Home
+                  New Home
                 </h2>
 
                 <p>
