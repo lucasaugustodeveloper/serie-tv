@@ -6,6 +6,7 @@ const links = [
     { name: 'Attractions', path: '/attractions' },
     { name: 'About', path: '/about' },
     { name: 'Dasboard', path: '/dashboard' },
+    { name: 'Contact', path: '/contact' },
 ]
 
 const getPathName = (pathname, verify) => {
