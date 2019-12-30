@@ -15,7 +15,7 @@ const FormAttraction = ({
     infoId
 }) => (
     <div className="row">
-        <div className="col-xs-6">
+        <div className="col">
             <Label
                 name="atracao"
                 displayName="Nome da Atração"
@@ -28,7 +28,7 @@ const FormAttraction = ({
                 handleInputChange={ handleInputChange }
             />
         </div>
-        <div className="col-xs-6">
+        <div className="col">
             <Label
                 name="type"
                 displayName="Meio de Exibição"
@@ -41,7 +41,7 @@ const FormAttraction = ({
                 handleInputChange={ handleInputChange }
             />
         </div>
-        <div className="col-xs-6">
+        <div className="col">
             <Label
                 name="hour"
                 displayName="Data de Exibição"
@@ -54,12 +54,13 @@ const FormAttraction = ({
                 handleInputChange={ handleInputChange }
             />
         </div>
-        <div className="col-xs-12">
-            <div className="row">
-                <div className="col-xs-3">
+        <div className='w-100' />
+        <div className="col">
+            <div className="row justify-content-sm-center">
+                <div className="col-lg-3">
                     <button
                         type="button"
-                        className="btnSend btn btn-default btn-block btn-lg"
+                            className={`btnSend btn ${!update ? 'btn-success' : 'btn-info'} btn-block btn-lg`}
                         onClick={ !update ? handleSubmit : () => handleUpdate(infoId) }
                     >
                         { !update ? 'Salvar': 'Update' }

@@ -10,12 +10,12 @@ const Home = lazy(() => import('../pages/home/Home'));
 const About = lazy(() => import('../pages/about/About'));
 const Dashboard = lazy(() => import('../pages/dashboard/Dashboard'));
 const Attractions = lazy(() => import('../components/Attractions/Attractions'));
-const Contact = lazy(() => import('../pages/contact'));
+const Contact = lazy(() => import('../pages/contact/Contact'));
 
 const App = () => (
-  <div className="container-fluid">
+  <div className="container">
     <Router>
-      <Suspense fallback={ <div>Carregando...</div> }>
+      <Suspense fallback={<div>Carregando...</div>}>
         <header className="header row">
           <Menu />
         </header>

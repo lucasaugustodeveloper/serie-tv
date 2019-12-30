@@ -1,5 +1,7 @@
-import React, { Fragment } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+
+import './menu.css';
 
 const links = [
     { name: 'Home', path: '/' },
@@ -7,32 +9,32 @@ const links = [
     { name: 'About', path: '/about' },
     { name: 'Dasboard', path: '/dashboard' },
     { name: 'Contact', path: '/contact' },
-]
+];
 
-const getPathName = (pathname, verify) => {
-    return pathname === verify ? 'active': '';
-}
-
-const renderLink = () => {
-    const pathname = window.location.pathname;
+const RenderLink = () => {
+    const [path, setPath] = useState('/');
 
     return links.map(link => (
-        <li key={link.name} className={ getPathName(pathname, link.path) }>
-            <Link to={link.path}>{link.name}</Link>
+        <li
+            key={link.name}
+            className={`nav-item ${path === link.path ? 'active' : null}`}
+        >
+            <Link
+                className='nav-link' to={link.path}
+                onClick={() => setPath(link.path)}
+            >
+                {link.name}
+            </Link>
         </li>
     ));
-}
+};
 
-const Menu = props => (
-    <Fragment>
-        <nav className='navbar navbar-default'>
-            <div className='container-fluid'>
-                <ul className='nav navbar-nav'>
-                    { renderLink() }
-                </ul>
-            </div>
-        </nav>
-    </Fragment>
-)
+const Menu = () => (
+    <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+        <ul className='navbar-nav mr-auto'>
+            {RenderLink()}
+        </ul>
+    </nav>
+);
 
 export default Menu
